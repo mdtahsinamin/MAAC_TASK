@@ -29,12 +29,12 @@ export class PostsService {
 
   // get all available post
   async findAll(): Promise<Post[]> {
-    return await this.postModel.find();
+    return await this.postModel.find().populate('userId');
   }
 
   // get single post by post_id
   async getPostById(postId: string): Promise<Post> {
-    const post = await this.postModel.findById(postId);
+    const post = await this.postModel.findById(postId).populate('userId');
 
     if (!post) {
       throw new NotFoundException('Post Not Found');
