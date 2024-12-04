@@ -32,7 +32,7 @@ export class UsersService {
     return result;
   }
 
-  async findByEmail(payload: { email: string }): Promise<User | null> {
+  async findByEmail(payload: { email: string }): Promise<User> {
     const user = await this.userModel.findOne({ email: payload.email });
 
     if (!user) {
